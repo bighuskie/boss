@@ -6,44 +6,102 @@ import {
   Radio,
   WingBlank,
   Button,
-  WhiteSpace
+  WhiteSpace,
+  Toast
 } from "antd-mobile";
+import { connect } from "react-redux";
+import { actionCreators } from "./store";
 import "./style.scss";
 
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: "applicant"
+      isAuth: false,
+      account: "",
+      password: "",
+      verifyPassword: "",
+      identity: ""
     };
+    this.navToLogin = this.navToLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  navToLogin() {
+    this.props.history.push("/login");
+  }
+  handleChange(key, value) {
+    this.setState({
+      [key]: value
+    });
   }
   render() {
     const RadioItem = Radio.RadioItem;
+    let { handleRegister } = this.props;
     return (
       <div>
         <Logo />
         <h3 className="info">账号注册</h3>
         <WingBlank>
           <List>
-            <InputItem>用户名</InputItem>
-            <InputItem>密码</InputItem>
-            <InputItem>确认密码</InputItem>
+            <InputItem onChange={value => this.handleChange("account", value)}>
+              用户名
+            </InputItem>
+            <InputItem
+              type="password"
+              onChange={value => this.handleChange("password", value)}
+            >
+              密码
+            </InputItem>
+            <InputItem
+              type="password"
+              onChange={value => this.handleChange("verifyPassword", value)}
+            >
+              确认密码
+            </InputItem>
             <WhiteSpace />
-            <RadioItem checked={this.state.type === "applicant"}>
+            <RadioItem
+              checked={this.state.identity === "applicant"}
+              onChange={() => this.handleChange("identity", "applicant")}
+            >
               求职者
             </RadioItem>
-            <RadioItem checked={this.state.type === "recruiter"}>
+            <RadioItem
+              checked={this.state.identity === "recruiter"}
+              onChange={() => this.handleChange("identity", "recruiter")}
+            >
               招聘者
             </RadioItem>
           </List>
           <WhiteSpace />
-          <Button type="primary">注册</Button>
+          <Button type="primary" onClick={() => handleRegister(this.state)}>
+            注册
+          </Button>
           <WhiteSpace />
-          <Button type="primary">登录</Button>
+          <Button type="primary" onClick={this.navToLogin}>
+            登录
+          </Button>
         </WingBlank>
       </div>
     );
   }
 }
 
-export default Register;
+const mapStateToProp = state => {
+  return {
+    isAuth: state.getIn(["Register", "isAuth"]),
+    message: state.getIn(["Register", "message"])
+  };
+};
+
+const mapDispatchToProp = dispatch => {
+  return {
+    handleRegister(regInfo) {
+      const action = actionCreators.handleRegister(regInfo);
+      dispatch(action);
+    }
+  };
+};
+export default connect(
+  mapStateToProp,
+  mapDispatchToProp
+)(Register);
