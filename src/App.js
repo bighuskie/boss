@@ -4,6 +4,7 @@ import store from "./store/store";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 //引入组件
+import AuthRoute from "./pages/auth";
 import Login from "./pages/login";
 import Register from "./pages/register";
 
@@ -12,6 +13,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
+          <AuthRoute />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
         </BrowserRouter>

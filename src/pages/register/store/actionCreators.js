@@ -21,14 +21,22 @@ export const handleRegister = regInfo => {
   } else if (regInfo.password !== regInfo.verifyPassword) {
     return registerFail("密码不匹配");
   }
-    return dispatch => {
-      axios
-        .post("/user/info", regInfo)
-        .then(res => {
-        //   dispatch(res);
-        })
-        .catch(err => {
-          console.log("请求失败");
-        });
-    };
+  return dispatch => {
+    const { account, password, identity } = regInfo;
+    axios
+      .post("http://localhost:8080/user/info", {
+        account,
+        password,
+        identity
+      })
+      .then(res => {
+        const data = res.data;
+        console.log(res);
+        dispatch(registerSuccess(data));
+      })
+      .catch(err => {
+        dispatch(registerFail("请求失败"));
+        console.log("请求失败");
+      });
+  };
 };

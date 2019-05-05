@@ -6,12 +6,12 @@ import {
   Radio,
   WingBlank,
   Button,
-  WhiteSpace,
-  Toast
+  WhiteSpace
 } from "antd-mobile";
-import { connect } from "react-redux";
-import { actionCreators } from "./store";
 import "./style.scss";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { actionCreators } from "./store";
 
 class Register extends Component {
   constructor(props) {
@@ -36,9 +36,10 @@ class Register extends Component {
   }
   render() {
     const RadioItem = Radio.RadioItem;
-    let { handleRegister } = this.props;
+    let { redirectTo, handleRegister } = this.props;
     return (
       <div>
+        {redirectTo ? <Redirect to={redirectTo} /> : null}
         <Logo />
         <h3 className="info">账号注册</h3>
         <WingBlank>
@@ -89,7 +90,8 @@ class Register extends Component {
 const mapStateToProp = state => {
   return {
     isAuth: state.getIn(["Register", "isAuth"]),
-    message: state.getIn(["Register", "message"])
+    message: state.getIn(["Register", "message"]),
+    redirectTo: state.getIn(["Register", "redirectTo"])
   };
 };
 
