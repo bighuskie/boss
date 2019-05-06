@@ -14,7 +14,7 @@ class Auth extends Component {
       .then(res => {
         if (res.status === 200) {
           //已经登录
-          if (res.data.code === 0) {
+          if (res.data.code === 1) {
             console.log(res.data);
           } else {
             //还没登陆需要跳转

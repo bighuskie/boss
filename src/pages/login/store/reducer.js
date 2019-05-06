@@ -13,16 +13,16 @@ const defalutState = fromJS({
 
 export default (state = defalutState, action) => {
   switch (action.type) {
-    case actionType.REGISTER_SUCCESS:
+    case actionType.LOGIN_SUCCESS:
       return state.merge({
         isAuth: true,
-        redirectTo: getRedirectPath(action.data),
+        redirectTo: getRedirectPath(action),
         message: "",
         account: action.data.account,
         password: action.data.password,
         identity: action.data.identity
       });
-    case actionType.REGISTER_FAIL:
+    case actionType.LOGIN_FAIL:
       return state.merge({
         isAuth: false,
         redirectTo: "",

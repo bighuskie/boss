@@ -24,19 +24,31 @@ export const handleRegister = regInfo => {
   return dispatch => {
     const { account, password, identity } = regInfo;
     axios
-      .post("http://localhost:8080/user/info", {
+      .post("http://localhost:8080/user/register", {
         account,
         password,
         identity
       })
       .then(res => {
-        const data = res.data;
-        console.log(res);
-        dispatch(registerSuccess(data));
+        dispatch(
+          registerSuccess({
+            account,
+            password,
+            identity
+          })
+        );
       })
       .catch(err => {
         dispatch(registerFail("请求失败"));
         console.log("请求失败");
       });
+  };
+};
+
+//销毁组件时清除register的redux中RedirectTo和message
+
+export const clearReduxInfo = () => {
+  return {
+    type: actionType.CLEAR_REDUX_INFO
   };
 };

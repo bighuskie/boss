@@ -6,7 +6,8 @@ import {
   Radio,
   WingBlank,
   Button,
-  WhiteSpace
+  WhiteSpace,
+  NoticeBar
 } from "antd-mobile";
 import "./style.scss";
 import { connect } from "react-redux";
@@ -36,12 +37,22 @@ class Register extends Component {
   }
   render() {
     const RadioItem = Radio.RadioItem;
-    let { redirectTo, handleRegister } = this.props;
+    let { message, redirectTo, handleRegister } = this.props;
     return (
       <div>
+        {/* 注册成功就重定向 */}
         {redirectTo ? <Redirect to={redirectTo} /> : null}
         <Logo />
         <h3 className="info">账号注册</h3>
+        {/* 提示通知栏  */}
+        {message ? (
+          <div>
+            <NoticeBar mode="closable" icon={null}>
+              {message}
+            </NoticeBar>
+            <WhiteSpace />
+          </div>
+        ) : null}
         <WingBlank>
           <List>
             <InputItem onChange={value => this.handleChange("account", value)}>
@@ -85,6 +96,10 @@ class Register extends Component {
       </div>
     );
   }
+  componentWillUnmount() {
+    const { clearReduxInfo } = this.props;
+    clearReduxInfo();
+  }
 }
 
 const mapStateToProp = state => {
@@ -97,9 +112,18 @@ const mapStateToProp = state => {
 
 const mapDispatchToProp = dispatch => {
   return {
+    /**
+     *派发登录action，处理登录逻辑
+     */
     handleRegister(regInfo) {
       const action = actionCreators.handleRegister(regInfo);
       dispatch(action);
+    },
+    /**
+     * 销毁组件时清除register的redux中RedirectTo和message
+     */
+    clearReduxInfo() {
+      dispatch(actionCreators.clearReduxInfo());
     }
   };
 };

@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import AuthRoute from "./pages/auth";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import UserCenter from "./pages/userCenter";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <AuthRoute />
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
+          <Route path="/applicant" exact component={UserCenter} />
         </BrowserRouter>
       </Provider>
     );
