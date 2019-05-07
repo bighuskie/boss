@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Grid } from "antd-mobile";
+import PropTypes from "prop-types";
 
 const Tip = function(props) {
   if (!props.avatar) {
@@ -8,12 +9,15 @@ const Tip = function(props) {
   return (
     <div style={{ lineHeight: "30px" }}>
       选择的头像为：
-      <img src={props.avatar} style={{ width: "30px" ,height:"30px"}} />
+      <img src={props.avatar} style={{ width: "30px", height: "30px" }} />
     </div>
   );
 };
 
 class Avatar extends Component {
+  static PropTypes = {
+    selectAvatar: PropTypes.func.isRequired
+  };
   constructor(props) {
     super(props);
     this.state = {

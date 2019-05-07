@@ -16,10 +16,12 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <AuthRoute />
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" exact component={Register} />
-          <Route path="/applicant" exact component={UserCenter} />
-          <Route path="/recruiter" exact component={Recruiter} />
+          <switch>
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
+            <Route path="/applicant" exact component={UserCenter} />
+            <Route path="/recruiter" exact component={Recruiter} />
+          </switch>
         </BrowserRouter>
       </Provider>
     );

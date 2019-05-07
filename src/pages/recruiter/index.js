@@ -1,13 +1,15 @@
 import React, { PureComponent } from "react";
-import { NavBar, InputItem, TextareaItem } from "antd-mobile";
+import { NavBar, InputItem, TextareaItem, Button } from "antd-mobile";
 import Avatar from "../../components/avatar";
+import { connect } from "react-redux";
+import { actionCreators } from "./store";
 
 class Recruiter extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       post: "",
-      avatarText: ""
+      header: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.selectAvatar = this.selectAvatar.bind(this);
@@ -20,10 +22,11 @@ class Recruiter extends PureComponent {
   //传递给头像选择组件的方法，获得用户选择的图片信息
   selectAvatar(avatar) {
     this.setState({
-      avatarText: avatar
+      header: avatar
     });
   }
   render() {
+    let { handleAuth } = this.props;
     return (
       <div>
         <NavBar mode="dark">个人信息完善</NavBar>
@@ -44,9 +47,23 @@ class Recruiter extends PureComponent {
           row={3}
           autoHeight
         />
+        <Button type="primary" onClick={() => handleAuth(this.state)}>
+          确定
+        </Button>
       </div>
     );
   }
 }
 
-export default Recruiter;
+const mapDispatchToProp = dispatch => {
+  return {
+    handleAuth(state) {
+      dispatch(actionCreators.handleAuth(state));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProp
+)(Recruiter);

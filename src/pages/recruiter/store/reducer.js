@@ -8,30 +8,21 @@ const defalutState = fromJS({
   username: "",
   identity: "",
   message: "",
-  _id: "",
-  header: "",
-  post: "",
-  info: "",
-  company: "",
-  salary: ""
+  _id: ""
 });
 
 export default (state = defalutState, action) => {
   switch (action.type) {
-    case actionType.LOGIN_SUCCESS:
+    case actionType.REGISTER_SUCCESS:
       return state.merge({
         isAuth: true,
         redirectTo: getRedirectPath(action.data),
+        message: "",
         username: action.data.username,
         identity: action.data.identity,
-        _id: action.data._id,
-        header: action.data.header,
-        post: action.data.post,
-        info: action.data.info,
-        company: action.data.company,
-        salary: action.data.salary
+        _id: action.data._id
       });
-    case actionType.LOGIN_FAIL:
+    case actionType.REGISTER_FAIL:
       return state.merge({
         isAuth: false,
         redirectTo: "",
@@ -41,7 +32,7 @@ export default (state = defalutState, action) => {
         _id: ""
       });
     case actionType.CLEAR_REDUX_INFO:
-      return state.merge({ redirectTo: "", message: "" });
+      return state.set("redirectTo", "").set("message", "");
     default:
       return state;
   }
