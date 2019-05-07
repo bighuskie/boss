@@ -15,6 +15,7 @@ class Auth extends Component {
         if (res.status === 200) {
           //已经登录
           if (res.data.code === 0) {
+            console.log("登录成功");
           } else {
             //还没登陆需要跳转
             this.props.history.push("/login");

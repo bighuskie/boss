@@ -7,6 +7,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import AuthRoute from "./pages/auth";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import Recruiter from "./pages/recruiter";
 import UserCenter from "./pages/userCenter";
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/applicant" exact component={UserCenter} />
+          <Route path="/recruiter" exact component={Recruiter} />
         </BrowserRouter>
       </Provider>
     );
