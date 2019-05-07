@@ -5,7 +5,7 @@ import { getRedirectPath } from "../../../util";
 const defalutState = fromJS({
   isAuth: false,
   redirectTo: "",
-  account: "",
+  username: "",
   password: "",
   identity: "",
   message: ""
@@ -18,7 +18,7 @@ export default (state = defalutState, action) => {
         isAuth: true,
         redirectTo: getRedirectPath(action.data),
         message: "",
-        account: action.data.account,
+        username: action.data.account,
         password: action.data.password,
         identity: action.data.identity
       });
@@ -26,7 +26,7 @@ export default (state = defalutState, action) => {
       return state.merge({
         isAuth: false,
         redirectTo: "",
-        account: "",
+        username: "",
         password: "",
         identity: "",
         message: action.msg

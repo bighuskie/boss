@@ -16,23 +16,23 @@ const registerFail = msg => {
 };
 
 export const handleRegister = regInfo => {
-  if (!regInfo.account || !regInfo.password || !regInfo.verifyPassword) {
+  if (!regInfo.username || !regInfo.password || !regInfo.verifyPassword) {
     return registerFail("账号或密码不可以为空");
   } else if (regInfo.password !== regInfo.verifyPassword) {
     return registerFail("密码不匹配");
   }
   return dispatch => {
-    const { account, password, identity } = regInfo;
+    const { username, password, identity } = regInfo;
     axios
-      .post("http://localhost:8080/user/register", {
-        account,
+      .post("/register", {
+        username,
         password,
         identity
       })
       .then(res => {
         dispatch(
           registerSuccess({
-            account,
+            username,
             password,
             identity
           })
@@ -40,6 +40,7 @@ export const handleRegister = regInfo => {
       })
       .catch(err => {
         dispatch(registerFail("请求失败"));
+        // throw err;
         console.log("请求失败");
       });
   };

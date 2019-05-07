@@ -16,19 +16,19 @@ const loginFail = msg => {
 };
 
 export const handleLogin = loginInfo => {
-  if (!loginInfo.account || !loginInfo.password) {
+  if (!loginInfo.username || !loginInfo.password) {
     return loginFail("账号或密码不可以为空");
   }
   return dispatch => {
-    const { account, password } = loginInfo;
+    const { username, password } = loginInfo;
     axios
-      .post("http://localhost:8080/user/login", {
-        account,
+      .post("/login", {
+        username,
         password
       })
       .then(res => {
         const result = res.data;
-        if (res.status === 200 && result.code === 1) {
+        if (res.status === 200 && result.code === 0) {
           const data = result.data;
           dispatch(loginSuccess(data));
         }

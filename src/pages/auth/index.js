@@ -10,14 +10,16 @@ class Auth extends Component {
       return false;
     }
     axios
-      .get("http://localhost:8080/user/info")
+      .get("/user")
       .then(res => {
         if (res.status === 200) {
           //已经登录
-          if (res.data.code === 1) {
+          if (res.data.code === 0) {
+            console.log("ok");
             console.log(res.data);
           } else {
             //还没登陆需要跳转
+            console.log("hahaha")
             this.props.history.push("/login");
           }
         }

@@ -17,7 +17,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      accout: "",
+      username: "",
       password: ""
     };
     this.navToRegister = this.navToRegister.bind(this);
@@ -52,7 +52,7 @@ class Login extends Component {
         ) : null}
         <WingBlank>
           <List>
-            <InputItem onChange={value => this.handleChange("account", value)}>
+            <InputItem onChange={value => this.handleChange("username", value)}>
               用户名
             </InputItem>
             <InputItem

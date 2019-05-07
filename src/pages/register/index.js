@@ -19,7 +19,7 @@ class Register extends Component {
     super(props);
     this.state = {
       isAuth: false,
-      account: "",
+      username: "",
       password: "",
       verifyPassword: "",
       identity: ""
@@ -55,7 +55,9 @@ class Register extends Component {
         ) : null}
         <WingBlank>
           <List>
-            <InputItem onChange={value => this.handleChange("account", value)}>
+            <InputItem
+              onChange={value => this.handleChange("username", value)}
+            >
               用户名
             </InputItem>
             <InputItem
