@@ -30,13 +30,7 @@ export const handleRegister = regInfo => {
         identity
       })
       .then(res => {
-        dispatch(
-          registerSuccess({
-            username,
-            password,
-            identity
-          })
-        );
+        dispatch(registerSuccess(res.data.data));
       })
       .catch(err => {
         dispatch(registerFail("请求失败"));

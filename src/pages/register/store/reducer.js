@@ -6,9 +6,9 @@ const defalutState = fromJS({
   isAuth: false,
   redirectTo: "",
   username: "",
-  password: "",
   identity: "",
-  message: ""
+  message: "",
+  _id: ""
 });
 
 export default (state = defalutState, action) => {
@@ -18,21 +18,21 @@ export default (state = defalutState, action) => {
         isAuth: true,
         redirectTo: getRedirectPath(action.data),
         message: "",
-        username: action.data.account,
-        password: action.data.password,
-        identity: action.data.identity
+        username: action.data.username,
+        identity: action.data.identity,
+        _id: action.data._id
       });
     case actionType.REGISTER_FAIL:
       return state.merge({
         isAuth: false,
         redirectTo: "",
         username: "",
-        password: "",
         identity: "",
-        message: action.msg
+        message: action.msg,
+        _id: ""
       });
     case actionType.CLEAR_REDUX_INFO:
-      return state.merge({ redirectTo: "", message: "" });
+      return state.set("redirectTo", "").set("message", "");
     default:
       return state;
   }

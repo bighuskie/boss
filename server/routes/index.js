@@ -48,7 +48,7 @@ router.post("/register", function(req, res) {
     // 如果user有值(已存在)
     if (user) {
       // 返回提示错误的信息
-      res.send({ code: 1, msg: "此用户已存在" });
+      return res.send({ code: 1, msg: "此用户已存在" });
     } else {
       // 没值(不存在)
       // 保存
@@ -58,7 +58,7 @@ router.post("/register", function(req, res) {
           res.cookie("userid", user._id, { maxAge: 1000 * 60 * 60 * 24 });
           // 返回包含user的json数据
           const data = { username, identity, _id: user._id }; // 响应数据中不要携带password
-          res.send({ code: 0, data });
+          return res.send({ code: 0, data });
         }
       );
     }
