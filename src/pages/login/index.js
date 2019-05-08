@@ -81,8 +81,8 @@ class Login extends Component {
 }
 const mapStateToProps = state => {
   return {
-    message: state.getIn(["Login", "message"]),
-    redirectTo: state.getIn(["Login", "redirectTo"])
+    message: state.getIn(["User", "message"]),
+    redirectTo: state.getIn(["User", "redirectTo"])
   };
 };
 const mapDispatchToProps = dispatch => {

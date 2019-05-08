@@ -27,7 +27,7 @@ class Auth extends Component {
       });
   }
   render() {
-    return <div>判断路由跳转的组件</div>;
+    return null;
   }
 }
 

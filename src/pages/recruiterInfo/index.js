@@ -4,7 +4,7 @@ import Avatar from "../../components/avatar";
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
 
-class Recruiter extends PureComponent {
+class RecruiterInfo extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,4 +66,4 @@ const mapDispatchToProp = dispatch => {
 export default connect(
   null,
   mapDispatchToProp
-)(Recruiter);
+)(RecruiterInfo);

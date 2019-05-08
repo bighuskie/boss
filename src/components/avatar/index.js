@@ -15,9 +15,9 @@ const Tip = function(props) {
 };
 
 class Avatar extends Component {
-  static PropTypes = {
-    selectAvatar: PropTypes.func.isRequired
-  };
+  // static PropTypes = {
+  //   selectAvatar: PropTypes.func.isRequired
+  // };
   constructor(props) {
     super(props);
     this.state = {

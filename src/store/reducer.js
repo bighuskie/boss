@@ -5,5 +5,5 @@ import { reducer as loginReducer } from "../pages/login/store";
 
 export default combineReducers({
   Register: registerReducer,
-  Login: loginReducer
+  User: loginReducer
 });
