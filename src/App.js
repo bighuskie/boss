@@ -20,7 +20,7 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-            <Route path="/applicant" exact component={UserCenter} />
+            {/* <Route path="/applicant" exact component={UserCenter} /> */}
             <Route path="/recruiterinfo" exact component={RecruiterInfo} />
             <Route component={Dashboard} />
           </Switch>
