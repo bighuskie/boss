@@ -8,7 +8,6 @@ import AuthRoute from "./pages/auth";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import RecruiterInfo from "./pages/recruiterInfo";
-import UserCenter from "./pages/userCenter";
 import Dashboard from "./pages/dashboard";
 
 class App extends Component {
@@ -20,7 +19,6 @@ class App extends Component {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-            {/* <Route path="/applicant" exact component={UserCenter} /> */}
             <Route path="/recruiterinfo" exact component={RecruiterInfo} />
             <Route component={Dashboard} />
           </Switch>
