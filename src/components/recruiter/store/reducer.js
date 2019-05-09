@@ -8,7 +8,7 @@ const defalutState = fromJS({
 export default (state = defalutState, action) => {
   switch (action.type) {
     case actionType.GET_USER_LIST:
-      return state.set("userList", action.data);
+      return state.set("userList", fromJS(action.data));
     default:
       return state;
   }
