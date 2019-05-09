@@ -138,6 +138,7 @@ router.get("/user", function(req, res) {
 // 获取用户列表(根据类型)
 router.get("/userlist", function(req, res) {
   const { identity } = req.query;
+  // UserModel.findByIdAndRemove("5cd17d4c551e8a4900dcd060");
   UserModel.find({ identity }, filter, function(error, users) {
     res.send({ code: 0, data: users });
   });

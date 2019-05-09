@@ -4,10 +4,9 @@ import { NavBar } from "antd-mobile";
 import NavFooter from "../../components/navFooter";
 import { Route, Switch } from "react-router-dom";
 import "./style.scss";
+import Recruiter from "../../components/recruiter"
 
-function Recruiter() {
-  return <div>recruiter</div>;
-}
+
 function Applicant() {
   return <div>applicant</div>;
 }
