@@ -15,7 +15,8 @@ class RecruiterInfo extends PureComponent {
     super(props);
     this.state = {
       post: "",
-      header: ""
+      header: "",
+      info: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.selectAvatar = this.selectAvatar.bind(this);
@@ -39,17 +40,17 @@ class RecruiterInfo extends PureComponent {
         {/* 头像选择组件 */}
         <Avatar selectAvatar={this.selectAvatar} />
         <InputItem onChange={value => this.handleChange("post", value)}>
-          招聘职位
+          应聘职位
         </InputItem>
-        <InputItem onChange={value => this.handleChange("company", value)}>
+        {/* <InputItem onChange={value => this.handleChange("company", value)}>
           公司名称
-        </InputItem>
-        <InputItem onChange={value => this.handleChange("salary", value)}>
+        </InputItem> */}
+        {/* <InputItem onChange={value => this.handleChange("salary", value)}>
           职位薪资
-        </InputItem>
+        </InputItem> */}
         <TextareaItem
           onChange={value => this.handleChange("info", value)}
-          title="职位要求"
+          title="个人简介"
           row={3}
           autoHeight
         />

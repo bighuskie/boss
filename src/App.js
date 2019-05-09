@@ -8,6 +8,7 @@ import AuthRoute from "./pages/auth";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import RecruiterInfo from "./pages/recruiterInfo";
+import ApplicantInfo from "./pages/applicantInfo";
 import Dashboard from "./pages/dashboard";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/recruiterinfo" exact component={RecruiterInfo} />
+            <Route path="/applicantinfo" exact component={ApplicantInfo} />
             <Route component={Dashboard} />
           </Switch>
         </BrowserRouter>

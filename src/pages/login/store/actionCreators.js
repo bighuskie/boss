@@ -4,13 +4,13 @@ import { actionType } from "./index";
 //登录账号的action
 const loginSuccess = data => {
   return {
-    type: actionType.LOGIN_SUCCESS,
+    type: actionType.AUTH_SUCCESS,
     data
   };
 };
 const loginFail = msg => {
   return {
-    type: actionType.LOGIN_FAIL,
+    type: actionType.AUTH_FAIL,
     msg
   };
 };

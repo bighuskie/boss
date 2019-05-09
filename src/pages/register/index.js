@@ -106,9 +106,9 @@ class Register extends Component {
 
 const mapStateToProp = state => {
   return {
-    isAuth: state.getIn(["Register", "isAuth"]),
-    message: state.getIn(["Register", "message"]),
-    redirectTo: state.getIn(["Register", "redirectTo"])
+    isAuth: state.getIn(["User", "isAuth"]),
+    message: state.getIn(["User", "message"]),
+    redirectTo: state.getIn(["User", "redirectTo"])
   };
 };
 

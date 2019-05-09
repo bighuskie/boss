@@ -1,3 +1,3 @@
-export const LOGIN_SUCCESS = "/login/LOGIN_SUCCESS";
-export const LOGIN_FAIL = "/login/LOGIN_FAIL";
-export const CLEAR_REDUX_INFO = "/login/CLEAR_REDUX_INFO";
+export const AUTH_SUCCESS = "AUTH_SUCCESS";
+export const AUTH_FAIL = "AUTH_FAIL";
+export const CLEAR_REDUX_INFO = "CLEAR_REDUX_INFO";

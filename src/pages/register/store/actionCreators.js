@@ -4,13 +4,13 @@ import { actionType } from "./index";
 //注册账号的action
 const registerSuccess = data => {
   return {
-    type: actionType.REGISTER_SUCCESS,
+    type: actionType.AUTH_SUCCESS,
     data
   };
 };
 const registerFail = msg => {
   return {
-    type: actionType.REGISTER_FAIL,
+    type: actionType.AUTH_FAIL,
     msg
   };
 };
