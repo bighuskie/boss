@@ -26,7 +26,7 @@ class NavFooter extends Component {
                   uri: require(`./images/${item.icon}-selected.png`)
                 }}
                 tabBarPosition="bottom"
-                selected={pathname == item.path}
+                selected={pathname === item.path}
                 onPress={() => {
                   this.props.history.push(item.path);
                 }}

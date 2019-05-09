@@ -5,6 +5,7 @@ import NavFooter from "../../components/navFooter";
 import { Route, Switch } from "react-router-dom";
 import "./style.scss";
 import Recruiter from "../../components/recruiter"
+import Personal from "./components/personal"
 
 
 function Applicant() {
@@ -13,9 +14,7 @@ function Applicant() {
 function Message() {
   return <div>message</div>;
 }
-function Personal() {
-  return <div>personal</div>;
-}
+
 
 class Dashboard extends Component {
   render() {
